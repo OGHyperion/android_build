@@ -822,21 +822,6 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   # Dump fingerprints
   script.Print("Target: {}".format(target_info.fingerprint))
 
-  script.Print(" ")
-  script.Print("===================================================================================== ")
-  script.Print("==      ============================================================    =====      == ")
-  script.Print("=  ====  ==========================================================  ==  ===  ====  = ")
-  script.Print("=  ====  =========================================================  ====  ==  ====  = ")
-  script.Print("==  =======  =  ==    ====   ===  =   ===  ===   ===  =   ========  ====  ===  ====== ")
-  script.Print("====  =====  =  ==  =  ==  =  ==    =  ======     ==    =  =======  ====  =====  ==== ")
-  script.Print("======  ===  =  ==  =  ==     ==  =======  ==  =  ==  ============  ====  =======  == ")
-  script.Print("=  ====  ==  =  ==    ===  =====  =======  ==  =  ==  ============  ====  ==  ====  = ")
-  script.Print("=  ====  ==  =  ==  =====  =  ==  =======  ==  =  ==  =============  ==  ===  ====  = ")
-  script.Print("==      ====    ==  ======   ===  =======  ===   ===  ==============    =====      == ")
-  script.Print("===================================================================================== ")
-  script.Print(" ")
-  script.Print(" ")
-  script.AppendExtra("sleep (2);")
   device_specific.FullOTA_InstallBegin()
 
   CopyInstallTools(output_zip)
@@ -855,6 +840,49 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   # All other partitions as well as the data wipe use 10% of the progress, and
   # the update of the system partition takes the remaining progress.
   system_progress = 0.9 - (len(block_diff_dict) - 1) * 0.1
+
+  if target_info.GetBuildProp("ro.pex.version") is not None:
+    buildid = target_info.GetBuildProp("ro.pex.version")
+    buildidn = target_info.GetBuildProp("ro.build.id")
+    buildday = target_info.GetBuildProp("ro.build.date")
+    securep = target_info.GetBuildProp("ro.build.version.security_patch")
+    density = target_info.GetBuildProp("ro.sf.lcd_density")
+    device = target_info.GetBuildProp("ro.pex.device")
+    androidver = target_info.GetBuildProp("ro.build.version.release")
+    manifacturer = target_info.GetBuildProp("ro.product.manufacturer")
+    sdkver = target_info.GetBuildProp("ro.build.version.sdk")
+    script.Print("---------------------------------------------------------------");
+    script.Print("  _____ _          _ ______      _                 _          _ ");
+    script.Print(" |  __ (_)        | |  ____|    | |               | |        | |");
+    script.Print(" | |__) |__  _____| | |__  __  _| |_ ___ _ __   __| | ___  __| |");
+    script.Print(" |  ___/ \ \/ / _ \ |  __| \ \/ / __/ _ \ '_ \ / _\` |/ _ \/ _\|");
+    script.Print(" | |   | |>  <  __/ | |____ >  <| ||  __/ | | | (_| |  __/ (_| |");
+    script.Print(" |_|   |_/_/\_\___|_|______/_/\_\\__\___|_| |_|\__,_|\___|\__,_|");
+    script.Print("                                                                ");
+    script.Print("                      --- Alpha ---                             ");
+    script.Print("----------------------------------------------------------------");
+    script.Print(" **************** Software *****************");
+    script.Print(" OS version: %s"%(buildid));
+    script.Print("");
+    script.Print(" Android version: %s"%(androidver));
+    script.Print("");
+    script.Print(" Security patch: %s"%(securep));
+    script.Print("");
+    script.Print(" SDK version: %s"%(sdkver));
+    script.Print("");
+    script.Print(" Root status: Disabled");
+    script.Print("");
+    script.Print(" Build ID: %s"%(buildidn));
+    script.Print("");
+    script.Print(" Build date: %s"%(buildday));
+    script.Print(" **************** Hardware *****************");
+    script.Print(" Device codename: %s"%(device));
+    script.Print("");
+    script.Print(" Manufacturer: %s"%(manifacturer));
+    script.Print("");
+    script.Print(" LCD density: %s"%(density));
+    script.Print("");
+    script.Print(" *******************************************");
 
   if OPTIONS.wipe_user_data:
     system_progress -= 0.1
