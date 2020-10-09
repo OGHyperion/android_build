@@ -841,8 +841,8 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   # the update of the system partition takes the remaining progress.
   system_progress = 0.9 - (len(block_diff_dict) - 1) * 0.1
 
-  if target_info.GetBuildProp("ro.pex.version") is not None:
-    buildid = target_info.GetBuildProp("ro.pex.version")
+  if target_info.GetBuildProp("org.pex.version.prop") is not None:
+    buildid = target_info.GetBuildProp("org.pex.version.prop")
     buildidn = target_info.GetBuildProp("ro.build.id")
     buildday = target_info.GetBuildProp("ro.build.date")
     securep = target_info.GetBuildProp("ro.build.version.security_patch")
