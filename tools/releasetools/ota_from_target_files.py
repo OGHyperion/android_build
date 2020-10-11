@@ -846,21 +846,20 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     buildidn = target_info.GetBuildProp("ro.build.id")
     buildday = target_info.GetBuildProp("ro.build.date")
     securep = target_info.GetBuildProp("ro.build.version.security_patch")
-    density = target_info.GetBuildProp("ro.sf.lcd_density")
     device = target_info.GetBuildProp("ro.pex.device")
     androidver = target_info.GetBuildProp("ro.build.version.release")
     manifacturer = target_info.GetBuildProp("ro.product.manufacturer")
     sdkver = target_info.GetBuildProp("ro.build.version.sdk")
-    script.Print("---------------------------------------------------------------");
-    script.Print("  _____ _          _ ______      _                 _          _ ");
-    script.Print(" |  __ (_)        | |  ____|    | |               | |        | |");
-    script.Print(" | |__) |__  _____| | |__  __  _| |_ ___ _ __   __| | ___  __| |");
-    script.Print(" |  ___/ \ \/ / _ \ |  __| \ \/ / __/ _ \ '_ \ / _\` |/ _ \/ _\|");
-    script.Print(" | |   | |>  <  __/ | |____ >  <| ||  __/ | | | (_| |  __/ (_| |");
-    script.Print(" |_|   |_/_/\_\___|_|______/_/\_\\__\___|_| |_|\__,_|\___|\__,_|");
-    script.Print("                                                                ");
-    script.Print("                      --- Alpha ---                             ");
-    script.Print("----------------------------------------------------------------");
+    script.Print("-----------------------------------------------------------------");
+    script.Print("  _____ _          _ ______      _                 _          _  ");
+    script.Print(" |  __ (_)        | |  ____|    | |               | |        | | ");
+    script.Print(" | |__) |__  _____| | |__  __  _| |_ ___ _ __   __| | ___  __| | ");
+    script.Print(" |  ___/ \ \/ / _ \ |  __| \ \/ / __/ _ \ '_ \ / _\` |/ _ \/ _\| ");
+    script.Print(" | |   | |>  <  __/ | |____ >  <| ||  __/ | | | (_| |  __/ (_| | ");
+    script.Print(" |_|   |_/_/\_\___|_|______/_/\_\\__\___|_| |_|\__,_|\___|\__,_| ");
+    script.Print("                                                                 ");
+    script.Print("                           --- Alpha ---                         ");
+    script.Print("-----------------------------------------------------------------");
     script.Print(" **************** Software *****************");
     script.Print(" OS version: %s"%(buildid));
     script.Print("");
@@ -879,8 +878,6 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     script.Print(" Device codename: %s"%(device));
     script.Print("");
     script.Print(" Manufacturer: %s"%(manifacturer));
-    script.Print("");
-    script.Print(" LCD density: %s"%(density));
     script.Print("");
     script.Print(" *******************************************");
 
